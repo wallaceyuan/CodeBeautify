@@ -7,7 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const InlinePlugin = require('./plugins/InlinePlugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const AutoExternalPlugin = require('./plugins/AutoExternalPlugin');
-const CodeBeautify = require('./plugins/CodeBeautify')
+const MyPlugin = require('./plugins/MyPlugin')
 
 module.exports = {
     entry:'./src/index.js',
@@ -31,16 +31,16 @@ module.exports = {
             filename: '[name].css',
             chunkFilename: '[id].css'
         }),
-        new CodeBeautify()
+        new MyPlugin(),
         // new InlinePlugin({
         //     test:/\.(js|css)$/
         // })
-        /*new AutoExternalPlugin({
+        new AutoExternalPlugin({
             jquery:{
                 varName:'jQuery',
                 url: 'https://cdn.bootcss.com/jquery/3.1.0/jquery.js'
             }
-        })*/
+        })
     ],
     module:{
         rules:[
